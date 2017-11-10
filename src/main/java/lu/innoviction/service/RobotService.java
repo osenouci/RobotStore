@@ -13,13 +13,10 @@ import lu.innoviction.domain.RobotRepository;
 
 @Service
 public class RobotService {
-	
 	@Autowired
 	private RobotRepository robotRepository;
-	
 	@Autowired
 	private PhotoRepository photoRepository;
-	
 	/**
 	 * Gets the list of robots stored in the database. It lists all the items.
 	 * @return List<Robot>
@@ -36,28 +33,16 @@ public class RobotService {
 	public void add(Robot robot) {
 		this.robotRepository.save(robot);
 	}
-	
 	public List<Photo> listPhotos() {
 		
 		List<Photo> photos = new ArrayList<Photo>();
 		this.photoRepository.findAll().forEach(photos::add);
 		return photos;
 	}
-	
-	
-	public void delete(long id) {
-		
-		
+	public void delete(int id) {
+		this.robotRepository.delete(id);
 	}
-	public Robot get(long id) {
-	
-		
-		return null;
+	public Robot get(int id) {
+		return this.robotRepository.findOne(id);
 	}
-	
-	public void update(long id, Robot robot) {
-		
-		
-	}
-
 }
