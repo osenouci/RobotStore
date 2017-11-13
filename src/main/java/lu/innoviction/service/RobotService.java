@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lu.innoviction.domain.CategoryRepository;
 import lu.innoviction.domain.Photo;
 import lu.innoviction.domain.PhotoRepository;
 import lu.innoviction.domain.Robot;
 import lu.innoviction.domain.RobotRepository;
+import lu.innoviction.domain.Category;
 
 @Service
 public class RobotService {
@@ -17,11 +19,19 @@ public class RobotService {
 	private RobotRepository robotRepository;
 	@Autowired
 	private PhotoRepository photoRepository;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
+	public Category listByCategory(int categoryId) {
+		return this.categoryRepository.findOne(categoryId);
+	}
+	
 	/**
 	 * Gets the list of robots stored in the database. It lists all the items.
 	 * @return List<Robot>
 	 */
-	public List<Robot> list() {
+	public List<Robot> list() {		
 		List<Robot> robotList = new ArrayList<Robot>();
 		this.robotRepository.findAll().forEach(robotList::add);
 		return robotList;

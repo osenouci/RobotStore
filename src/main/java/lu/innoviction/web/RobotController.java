@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lu.innoviction.domain.Category;
 import lu.innoviction.domain.Photo;
 import lu.innoviction.domain.Robot;
 import lu.innoviction.service.RobotService;
@@ -39,6 +40,15 @@ public class RobotController {
 		return this.robotService.list();
 	}	
 	
+	/**
+	 * Lists the robots stored in the database.
+	 * @return List<Robot>
+	 */
+	@GetMapping("/robot/category/{id}")
+	public Category listByCategory(@PathVariable int id) {
+		return this.robotService.listByCategory(id);
+	}		
+	
 	/***
 	 * Used to store a new robot entry in the database.
 	 * @param robot
@@ -57,6 +67,4 @@ public class RobotController {
 	public void deleteRobot(@PathVariable int id) {
 		this.robotService.delete(id);
 	}
-	
-	
 }

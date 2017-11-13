@@ -1,5 +1,6 @@
 package lu.innoviction.domain;
+
 import org.springframework.data.repository.CrudRepository;
 
-public interface PhotoRepository extends CrudRepository<Photo, Integer> {
+public interface CategoryRepository extends CrudRepository<Category, Integer> {
 }
