@@ -1,4 +1,4 @@
-package lu.innoviction.web;
+package lu.innoviction.controller;
 
 import java.util.List;
 
@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import lu.innoviction.domain.Category;
-import lu.innoviction.domain.Photo;
-import lu.innoviction.domain.Robot;
+import lu.innoviction.model.Robot;
 import lu.innoviction.service.RobotService;
 
 
@@ -23,15 +21,6 @@ public class RobotController {
 	private RobotService robotService;
 	
 	/**
-	 * Lists the photo stored in the database.
-	 * @return List<Photo>
-	 */
-	@GetMapping("/photo")
-	public List<Photo> listPhoto() {
-		return this.robotService.listPhotos();
-	}	
-	
-	/**
 	 * Lists the robots stored in the database.
 	 * @return List<Robot>
 	 */
@@ -39,15 +28,6 @@ public class RobotController {
 	public List<Robot> list() {
 		return this.robotService.list();
 	}	
-	
-	/**
-	 * Lists the robots stored in the database.
-	 * @return List<Robot>
-	 */
-	@GetMapping("/robot/category/{id}")
-	public Category listByCategory(@PathVariable int id) {
-		return this.robotService.listByCategory(id);
-	}		
 	
 	/***
 	 * Used to store a new robot entry in the database.

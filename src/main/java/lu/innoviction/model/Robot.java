@@ -1,4 +1,4 @@
-package lu.innoviction.domain;
+package lu.innoviction.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,22 +13,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
+@Table(name="ROBOT")
 public class Robot {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@Column(length=512, unique=true)
+	@Column(length=512, unique=true, nullable = false)
 	private String name;
 	
-	@Column(length=5000)
+	@Column(length=5000, nullable = false)
 	private String description;
 	private double price;
 

@@ -1,37 +1,32 @@
-package lu.innoviction.domain;
+package lu.innoviction.model;
 
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="PHOTO")
 public class Photo {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+    @Column(length=2083, nullable = false)
 	private String url;
 	
-//	@ManyToOne
-//	@JoinColumn(name="ROB_ID", nullable=false)
-//	private Robot robot;	
-	
-/*	public Robot getRobot() {
-		return robot;
-	}
-	public void setRobot(Robot robot) {
-		this.robot = robot;
-	}
-	*/
 	public Photo() {
 	}	
 	
-	public Photo(int id, String url) {
-		this.url = url;
+	public Photo(int id, String url) throws MalformedURLException {
+		this.url = new URL(url).toString();
 		this.id  = id;
-	//	this.robot = robot;
 	}
 	
 	public int getId() {
@@ -43,16 +38,14 @@ public class Photo {
 	public String getUrl() {
 		return url;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUrl(String url) throws MalformedURLException {
+		
+		this.url = new URL(url).toString();
 	}
 
 	@Override
 	public String toString() {
 		return "Photo [id=" + id + ", url=" + url + "]";
 	}
-	
-	
-	
 	
 }
