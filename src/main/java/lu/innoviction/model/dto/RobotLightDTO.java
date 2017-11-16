@@ -1,25 +1,41 @@
 package lu.innoviction.model.dto;
-
 import lu.innoviction.model.Robot;
+
 
 public class RobotLightDTO implements DataTransferObject {
 
 	private static final long serialVersionUID = 5193770339418220274L;
-
+	protected static final int maxShortDescriptionLength = 160;
+	
 	private int id;	
 	private String name;
 	private String description;
 	private double price;
 	private String photo;
+	private int categoryId;
 	
 	public RobotLightDTO(Robot robot) {
+
 		this.id = robot.getId();
 		this.name = robot.getName();
-		this.description = robot.getDescription().substring(0, 60);	// Get only the first 60 characters
 		this.price = robot.getPrice();
-		this.photo = robot.getPhotos().size() > 0 ? robot.getPhotos().get(0).getUrl() : "";
-	}	
+		this.categoryId = robot.getCategory().getId();
 	
+		// Get a short description
+		int max = robot.getDescription().length() > RobotLightDTO.maxShortDescriptionLength ? RobotLightDTO.maxShortDescriptionLength : robot.getDescription().length();
+		this.description = robot.getDescription().substring(0, max);
+
+		// Get a single photo
+		this.photo = robot.getPhotos().size() > 0 ? robot.getPhotos().get(0).getUrl() : "";
+	}
+	
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 	public int getId() {
 		return id;
 	}

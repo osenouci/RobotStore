@@ -6,16 +6,16 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lu.innoviction.model.dto.RobotDTO;
 
 
 @Entity
@@ -23,29 +23,43 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Robot {
 	
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prd_seq")
+	@SequenceGenerator(name = "prd_seq", sequenceName = "prd_sequence", allocationSize = 20, initialValue = 100)    
+//    @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@Column(length=512, unique=true, nullable = false)
+
+	@Column(length=512, unique=true)
 	private String name;
-	
-	@Column(length=5000, nullable = false)
+    
+	@Column(length=5000)
 	private String description;
+    
 	private double price;
 
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name="ROB_ID")
 	private List<Photo> photos;
 
-	@JsonIgnore
-	@ManyToOne(fetch= FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.DETACH, targetEntity=Category.class)
     @JoinColumn(name = "CAT_ID")
 	private Category category;
 	
-	
 	public Robot() {
 		super();
+		this.photos = new ArrayList<>();
 	}
+
+	public Robot(RobotDTO dto) {
+		super();
+		this.name = dto.getName();
+		this.description = dto.getDescription();
+		this.price = dto.getPrice();		
+		this.category = dto.getCategory();
+
+		this.photos = new ArrayList<>();
+		dto.getPhotos().stream().forEach(photoDTO -> this.photos.add(new Photo(photoDTO.getUrl())));
+	}	
 	public Robot(int id, String name, String description, double price, List<Photo> photos) {
 		super();
 		this.id = id;
@@ -60,6 +74,8 @@ public class Robot {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		
+		this.photos = new ArrayList<>();
 	}	
 
 	public List<Photo> getPhotos() {
@@ -87,7 +103,7 @@ public class Robot {
 	}
 
 	public String getDescription() {
-		return description;
+		return description == null || description.isEmpty() ? "" : description;
 	}
 
 	public void setDescription(String description) {
@@ -113,7 +129,6 @@ public class Robot {
 	public String toString() {
 		return "Robot [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", total photos="
 				+ photos + "]";
-	}	
-	
+	}
 	
 }

@@ -1,23 +1,21 @@
 package lu.innoviction.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lu.innoviction.model.Category;
-import lu.innoviction.repository.CategoryRepository;
+import lu.innoviction.response.APIResponse;
+import lu.innoviction.service.CategoryService;
 
 @RestController
-public class CategoryController {
+public class CategoryController extends ApplicationController {
 
 	@Autowired
-	CategoryRepository categoryRepository;
+	CategoryService categoryService;
 	
 	@GetMapping("/category")
-	private List<Category> getCategories() {
-		return null;
+	private APIResponse getCategories() {
+		return this.successResponse(this.categoryService.findAllAsDTO());
 	}	
 	
 }

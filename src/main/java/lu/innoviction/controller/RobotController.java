@@ -1,7 +1,5 @@
 package lu.innoviction.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,12 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import lu.innoviction.model.Robot;
+import lu.innoviction.model.dto.RobotDTO;
+import lu.innoviction.response.APIResponse;
 import lu.innoviction.service.RobotService;
 
 
 @RestController
-public class RobotController {
+public class RobotController extends ApplicationController {
 	
 	@Autowired
 	private RobotService robotService;
@@ -25,8 +24,8 @@ public class RobotController {
 	 * @return List<Robot>
 	 */
 	@GetMapping("/robot")
-	public List<Robot> list() {
-		return this.robotService.list();
+	public APIResponse list() {
+		return this.successResponse(this.robotService.findAllAsDTO());
 	}	
 	
 	/***
@@ -34,17 +33,24 @@ public class RobotController {
 	 * @param robot
 	 */
 	@PostMapping("/robot")
-	public void add(@RequestBody Robot robot) {
-		this.robotService.add(robot);
+	public APIResponse add(@RequestBody RobotDTO robot) {
+		this.robotService.save(robot);	
+		return this.successResponse(null);
 	}
-
+	
 	@GetMapping("/robot/{id}")
-	public Robot getOne(@PathVariable int id) {
-		return this.robotService.get(id);
+	public APIResponse getOne(@PathVariable int id) {
+		return this.successResponse(this.robotService.findOneAsDTO(id));
 	}
 
+	@GetMapping("/robot/category/{id}")
+	public APIResponse findByCategoryId(@PathVariable int id) {
+		return this.successResponse(this.robotService.findByCategory(id));
+	}
+	
 	@DeleteMapping("/robot/{id}")
-	public void deleteRobot(@PathVariable int id) {
+	public APIResponse deleteRobot(@PathVariable int id) {
 		this.robotService.delete(id);
+		return this.successResponse(null);
 	}
 }

@@ -1,14 +1,10 @@
 package lu.innoviction.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Formula;
@@ -21,17 +17,19 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
-    @Column(length=512, unique=true, nullable = false)
+    @Column(length=100)
     private String name;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<Robot> robots;	
+    
+    //@JsonIgnore
+    //@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    //private List<Robot> robots;	
     
     @Formula("(SELECT count(*) FROM robot c where c.cat_id = id)")    
     private int totalRobots;
     
     public Category() {
     	this.name   = "";
-    	this.robots = null;
+    	//this.robots = null;
     	this.id     = 0;
     	this.totalRobots = 0;
     }
@@ -57,13 +55,13 @@ public class Category {
 		this.name = name;
 	}
 
-	public List<Robot> getRobots() {
-		return robots;
-	}
-
-	public void setRobots(List<Robot> robots) {
-		this.robots = robots;
-	}
+//	public List<Robot> getRobots() {
+//		return robots;
+//	}
+//
+//	public void setRobots(List<Robot> robots) {
+//		this.robots = robots;
+//	}
 	
 	
     public int getChildCount() {

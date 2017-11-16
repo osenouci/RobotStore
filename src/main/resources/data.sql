@@ -16,4 +16,3 @@ INSERT INTO robot (id, cat_id, price, name , description) VALUES(2, 1, 139.99, '
 INSERT INTO photo (id, rob_id, url) VALUES(6,  2, 'http://www.robotshop.com/media/catalog/product/cache/1/image/900x900/9df78eab33525d08d6e5fb8d27136e95/s/p/sphero-star-wars-bb-8-bluetooth-smartphone-controlled-robotic-ball-1.jpg');
 INSERT INTO photo (id, rob_id, url) VALUES(7,  2, 'http://www.robotshop.com/media/catalog/product/cache/1/image/900x900/9df78eab33525d08d6e5fb8d27136e95/s/p/sphero-star-wars-bb-8-bluetooth-smartphone-controlled-robotic-ball-2.jpg');
 INSERT INTO photo (id, rob_id, url) VALUES(8,  2, 'http://www.robotshop.com/media/catalog/product/cache/1/image/900x900/9df78eab33525d08d6e5fb8d27136e95/s/p/sphero-star-wars-bb-8-bluetooth-smartphone-controlled-robotic-ball_1.jpg');
-

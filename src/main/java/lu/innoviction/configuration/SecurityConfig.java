@@ -15,10 +15,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
+        	.csrf().disable().authorizeRequests()
             .antMatchers(HttpMethod.POST  , "/robot").authenticated()
             .antMatchers(HttpMethod.DELETE, "/robot").authenticated()
-            .anyRequest().permitAll();
+            .anyRequest().permitAll()
+            .and().httpBasic();
     }
 
     @Autowired

@@ -1,14 +1,12 @@
 package lu.innoviction.model;
 
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,17 +14,23 @@ import javax.persistence.Table;
 public class Photo {
 	
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prd_seq")
+	@SequenceGenerator(name = "prd_seq", sequenceName = "prd_sequence", allocationSize = 20)    
+    //    @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-    @Column(length=2083, nullable = false)
+    
+    //@URL(message="Invalid image URL. Please verify the URL(s) that you have submitted")
+    @Column(length=2083)
 	private String url;
 	
 	public Photo() {
 	}	
-	
-	public Photo(int id, String url) throws MalformedURLException {
-		this.url = new URL(url).toString();
+	public Photo(String url) {
+		this.url = url;
+	}	
+	public Photo(int id, String url) {
 		this.id  = id;
+		this.url = url;
 	}
 	
 	public int getId() {
@@ -38,9 +42,8 @@ public class Photo {
 	public String getUrl() {
 		return url;
 	}
-	public void setUrl(String url) throws MalformedURLException {
-		
-		this.url = new URL(url).toString();
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Override
