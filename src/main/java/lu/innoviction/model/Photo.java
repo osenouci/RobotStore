@@ -9,6 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/***
+ * The photo entity. A given robot can have 0 or many photos
+ * @author OthmaneSENOUCI
+ *
+ */
 @Entity
 @Table(name="PHOTO")
 public class Photo {
@@ -32,16 +37,35 @@ public class Photo {
 		this.id  = id;
 		this.url = url;
 	}
-	
+
+	/***
+	 * Getter for the property id
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
+	
+	/***
+	 * Setter for the property id
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	/**
+	 * Getter for the property url
+	 * @return
+	 */
 	public String getUrl() {
 		return url;
 	}
+	
+	/**
+	 * Setter for the property url
+	 * @param url
+	 */	
 	public void setUrl(String url) {
 		this.url = url;
 	}

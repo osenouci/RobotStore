@@ -10,7 +10,10 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-
+/***
+ * Define a validation annotation for the URL
+ * @author OthmaneSENOUCI
+ */
 @Target({ METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
 @Constraint(validatedBy = lu.innoviction.validation.URLValidator.class)

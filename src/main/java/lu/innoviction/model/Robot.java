@@ -28,19 +28,23 @@ public class Robot {
 //    @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-
+    // The robot name has the max length of 512 and it is unique
 	@Column(length=512, unique=true)
 	private String name;
     
+	// The description field's max length is 5000 
 	@Column(length=5000)
 	private String description;
     
+	// Robot's price
 	private double price;
 
+	// A robot has zero or more photos
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name="ROB_ID")
 	private List<Photo> photos;
-
+	
+	// A robot belongs to a category
 	@ManyToOne(cascade=CascadeType.DETACH, targetEntity=Category.class)
     @JoinColumn(name = "CAT_ID")
 	private Category category;
@@ -49,7 +53,6 @@ public class Robot {
 		super();
 		this.photos = new ArrayList<>();
 	}
-
 	public Robot(RobotDTO dto) {
 		super();
 		this.name = dto.getName();
@@ -78,49 +81,98 @@ public class Robot {
 		this.photos = new ArrayList<>();
 	}	
 
+	/***
+	 * Getter for the photos property
+	 * @return
+	 */
 	public List<Photo> getPhotos() {
 		return photos;
 	}
 
+	/**
+	 * Setter for the photos property
+	 * @param photos
+	 */
 	public void setPhotos(List<Photo> photos) {
 		this.photos =  new ArrayList<Photo>(photos);
 	}
 
+	/***
+	 * Getter for the id property
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/***
+	 * Setter for the id property
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/***
+	 * Getter for the name property
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/***
+	 * Setter for the description property
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/***
+	 * Getter for the description property
+	 * @return
+	 */
 	public String getDescription() {
 		return description == null || description.isEmpty() ? "" : description;
 	}
 
+	/**
+	 * Setter for the description property
+	 * @param description
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/***
+	 * Getter for the price category property
+	 * @return
+	 */
 	public double getPrice() {
 		return price;
 	}
 
+	/**
+	 * Setter for the price property
+	 * @param price
+	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	/***
+	 * Setter for the category property
+	 * @return
+	 */
 	public Category getCategory() {
 		return category;
 	}
+	
+	/**
+	 * Getter for the category property
+	 * @param category
+	 */
 	public void setCategory(Category category) {
 		this.category = category;
 	}

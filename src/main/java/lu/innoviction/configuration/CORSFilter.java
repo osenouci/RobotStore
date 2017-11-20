@@ -11,19 +11,23 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * Configure CROS to allow browsers to make cross domain requests.
+ * @author OthmaneSENOUCI
+ */
 @Component
 public class CORSFilter  implements Filter {
 
-	private final Logger log = LoggerFactory.getLogger(CORSFilter.class);
-	
-	public CORSFilter() {
-	    log.info("CORSFilter started");
-	}
-	
+	/***
+	 * Configure the system to allow cross domain requests and also to allow authentication.
+	 * @param req
+	 * @param res
+	 * @param chain
+	 * 
+	 */
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 	

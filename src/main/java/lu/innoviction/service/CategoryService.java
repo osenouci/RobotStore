@@ -10,6 +10,11 @@ import lu.innoviction.model.Category;
 import lu.innoviction.model.dto.CategoryDTO;
 import lu.innoviction.repository.CategoryRepository;
 
+/***
+ * Category service used to list the categories.
+ * @author OthmaneSENOUCI
+ *
+ */
 @Service
 public class CategoryService {
 

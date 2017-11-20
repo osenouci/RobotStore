@@ -4,7 +4,11 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 
-
+/***
+ * An implementation of the URL validation annotation.
+ * @author OthmaneSENOUCI
+ *
+ */
 public class URLValidator implements ConstraintValidator<URL, String> {
 
 	@Override
