@@ -72,6 +72,16 @@ TST has been used to create the backend as a **Maven** project. The project has 
 
 # Application routes
 
+## Categories
+ GET /category
+## Robotos
+ ##### Public routes
+ GET /robot
+ GET /robot/{id}
+ GET /robot/category/{id}"
+ ##### Protected routes
+ POST /robot/{id}
+ DELETE /robot/{id} 
 # Authentication
 The API uses Basic authentication to authenticate users.
 
