@@ -84,4 +84,8 @@ Authorization: Basic ZGVtbzpwQDU1dzByZA==
 [More information about basic authentication](https://swagger.io/docs/specification/authentication/basic-authentication/)
 
 
+#### How to access the protected routes?
+The test account users ***username*** and ***password*** as credentials. The credentials need to be formatted as follows ***username:password*** and we encode them use base64 encoding.
+
+Finally we need to pass them to the server as header using the key ***Authorization***
 
