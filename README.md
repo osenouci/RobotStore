@@ -12,7 +12,7 @@ The project is a simple e-commerce website that is used to sell robots online. T
 - Robot browsing does not require authentication.
 
 # Project repositories and demo 
-The project is divided into **`frontend`** and **`backend`** and there exists a Gitrepo for each of the projects and an additional repo for a Node Express server that has been used to serve the front end.
+The project is divided into two layers, **`frontend`** and **`backend`**. There exists a Github repo for each of the layers and an additional one for a Node Express server that has been used to serve the frontend on the heroku cloud.
 
 ### 1. Backend API - Spring Boot based.
 - Github repo -> (The repo you are currently visiting)
