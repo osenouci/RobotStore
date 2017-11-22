@@ -69,3 +69,9 @@ TST has been used to create the backend as a **Maven** project. The project has 
 |   +-- URL.java                                    // Defines the annotation interface
 |   +-- URLValidator.java                           // Defines the implementation
 ```
+
+# Application routes
+
+# Authentication
+
+
