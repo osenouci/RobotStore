@@ -36,38 +36,38 @@ TST has been used to create the backend as a **Maven** project. The project has 
 ```
 .
 +-- lu.innoviction
-|   +-- RobotStoreApplication.java                   // Application entry point
+|   +-- RobotStoreApplication.java              // Application entry point
 +-- lu.innoviction.configuration
-|   +-- CORSFilter.java                              // Allows cross browser requests
-|   +-- GlobalDefaultExceptionHandler.java           // Used to catch validation exceptions and output user friendly msgs.
-|   +-- SecurityConfig.java                          // Used to define authentication rules and adds a login test account.
-+-- lu.innoviction.controller                  // contains Rest Controllers          
-|   +-- ApplicationController.java                   // Base controller
-|   +-- CategoryController.java                      // Lists the categories as Data Transfer Objects
-|   +-- RobotController.java                         // Used for listing, adding and removing robotos.
-|   +-- UserController.java                          // Contains a single method used to mimic the user login process.
-+-- lu.innoviction.model                       // Used to define entities
-|   +-- Category.java                                // A category can have 0 or (n) robotos
-|   +-- Photo.java                                   // A robot can have 0 or (n) photos.
-|   +-- Robot.java                                   // A Robot belongs to single category & has several photos
-+-- lu.innoviction.model.dto                   // Data transfer model using to hide, format and validate properties.
-|   +-- CategoryDTO.java                             // Used for listing the categories instead of exposing the model.
-|   +-- DataTransferObject.java                      // Base class extends serlizable.
-|   +-- PhotoDTO.java                                // Used for validation and displaying in details.
-|   +-- RobotDTO.java                                // Used for validation and displaying in details.
-|   +-- RobotLightDTO.java                           // Used when we list robots. Contains a single photo instead of several.
-+-- lu.innoviction.repository                 // Standard GRUD repositories
-|   +-- CategoryRepository.java                      // Does not extra code.
-|   +-- PhotoRepository.java                         // Contains method signature used to find robots by category id.
-+-- lu.innoviction.response                   // Used to format the response
-|   +-- APIResponse.java                            // Defines the response as {status:boolean, data:any, error:[]|string}
-|   +-- Error.java                                  // Defines how errors should be formatted {field:string, message:string}
-+-- lu.innoviction.service                    // Injectable services
-|   +-- CategoryService.service                     // Carry out operations on the category grud repo
-|   +-- RobotService.java                           // Carry out operations on the robot grud repo
-+-- lu.innoviction.validation                 // Define validation annotations
-|   +-- URL.java                                    // Defines the annotation interface
-|   +-- URLValidator.java                           // Defines the implementation
+|   +-- CORSFilter.java                         // Allows cross browser requests
+|   +-- GlobalDefaultExceptionHandler.java      // Used to catch validation exceptions and output user friendly msgs.
+|   +-- SecurityConfig.java                     // Used to define authentication rules and adds a login test account.
++-- lu.innoviction.controller                // contains Rest Controllers          
+|   +-- ApplicationController.java              // Base controller
+|   +-- CategoryController.java                 // Lists the categories as Data Transfer Objects
+|   +-- RobotController.java                    // Used for listing, adding and removing robotos.
+|   +-- UserController.java                     // Contains a single method used to mimic the user login process.
++-- lu.innoviction.model                     // Used to define entities
+|   +-- Category.java                           // A category can have 0 or (n) robotos
+|   +-- Photo.java                              // A robot can have 0 or (n) photos.
+|   +-- Robot.java                              // A Robot belongs to single category & has several photos
++-- lu.innoviction.model.dto                 // Data transfer model using to hide, format and validate properties.
+|   +-- CategoryDTO.java                        // Used for listing the categories instead of exposing the model.
+|   +-- DataTransferObject.java                 // Base class extends serlizable.
+|   +-- PhotoDTO.java                           // Used for validation and displaying in details.
+|   +-- RobotDTO.java                           // Used for validation and displaying in details.
+|   +-- RobotLightDTO.java                      // Used when we list robots. Contains a single photo instead of several.
++-- lu.innoviction.repository                // Standard GRUD repositories
+|   +-- CategoryRepository.java                 // Does not extra code.
+|   +-- PhotoRepository.java                    // Contains method signature used to find robots by category id.
++-- lu.innoviction.response                  // Used to format the response
+|   +-- APIResponse.java                        // Defines the response as {status:boolean, data:any, error:[]|string}
+|   +-- Error.java                              // Defines how errors should be formatted {field:string, message:string}
++-- lu.innoviction.service                   // Injectable services
+|   +-- CategoryService.service                 // Carry out operations on the category grud repo
+|   +-- RobotService.java                       // Carry out operations on the robot grud repo
++-- lu.innoviction.validation                // Define validation annotations
+|   +-- URL.java                                // Defines the annotation interface
+|   +-- URLValidator.java                       // Defines the implementation
 ```
 
 # Application routes
