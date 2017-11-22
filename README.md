@@ -41,21 +41,31 @@ TST has been used to create the backend as a **Maven** project. The project has 
 |   +-- CORSFilter.java                              // Allows cross browser requests
 |   +-- GlobalDefaultExceptionHandler.java           // Used to catch validation exceptions and output user friendly msgs.
 |   +-- SecurityConfig.java                          // Used to define authentication rules and adds a login test account.
-+-- lu.innoviction.controller                        // contains Rest Controllers          
++-- lu.innoviction.controller                  // contains Rest Controllers          
 |   +-- ApplicationController.java                   // Base controller
 |   +-- CategoryController.java                      // Lists the categories as Data Transfer Objects
 |   +-- RobotController.java                         // Used for listing, adding and removing robotos.
 |   +-- UserController.java                          // Contains a single method used to mimic the user login process.
-+-- lu.innoviction.model
-|   +-- Category.java                                // Defines the Category Entity (JPA). Category can have 0 or (n) robotos
-|   +-- Photo.java                                   // Defines the photos entity (JPA). A robot can have 0 or (n) photos.
-|   +-- Robot.java                                   // Defines the robot entity (JPA). Robot belongs to single cat & has several fotos
-+-- lu.innoviction.model.dto
-|   +-- 2007-10-29-why-every-programmer-should-play-nethack.textile
-|   +-- 2009-04-26-barcamp-boston-4-roundup.textile
-+-- lu.innoviction.repository
-|   +-- members.yml
-+-- lu.innoviction.response
-+-- lu.innoviction.service
-+-- lu.innoviction.validation
++-- lu.innoviction.model                       // Used to define entities
+|   +-- Category.java                                // A category can have 0 or (n) robotos
+|   +-- Photo.java                                   // A robot can have 0 or (n) photos.
+|   +-- Robot.java                                   // A Robot belongs to single category & has several photos
++-- lu.innoviction.model.dto                   // Data transfer model using to hide, format and validate properties.
+|   +-- CategoryDTO.java                             // Used for listing the categories instead of exposing the model.
+|   +-- DataTransferObject.java                      // Base class extends serlizable.
+|   +-- PhotoDTO.java                                // Used for validation and displaying in details.
+|   +-- RobotDTO.java                                // Used for validation and displaying in details.
+|   +-- RobotLightDTO.java                           // Used when we list robots. Contains a single photo instead of several.
++-- lu.innoviction.repository                 // Standard GRUD repositories
+|   +-- CategoryRepository.java                      // Does not extra code.
+|   +-- PhotoRepository.java                         // Contains method signature used to find robots by category id.
++-- lu.innoviction.response                   // Used to format the response
+|   +-- APIResponse.java                            // Defines the response as {status:boolean, data:any, error:[]|string}
+|   +-- Error.java                                  // Defines how errors should be formatted {field:string, message:string}
++-- lu.innoviction.service                    // Injectable services
+|   +-- CategoryService.service                     // Carry out operations on the category grud repo
+|   +-- RobotService.java                           // Carry out operations on the robot grud repo
++-- lu.innoviction.validation                 // Define validation annotations
+|   +-- URL.java                                    // Defines the annotation interface
+|   +-- URLValidator.java                           // Defines the implementation
 ```
