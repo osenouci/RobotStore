@@ -9,6 +9,7 @@ The project is a simple e-commerce website that is used to sell robots online. T
 - List product categories. Example Cleaning, indestrial robots or what have you.
 - The ability to list, add, delete robots. `The update functionality has not been implemented.`
 - Login is required in order to delete or add a new product.
+- Robot browsing does not require authentication.
 
 # Project repositories and demo 
 The project is divided into **`frontend`** and **`backend`** and there exists a Gitrepo for each of the projects and an additional repo for a Node Express server that has been used to serve the front end.
