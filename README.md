@@ -71,17 +71,19 @@ TST has been used to create the backend as a **Maven** project. The project has 
 ```
 
 # Application routes
-
+The application has two sets of routes that are used to carry out GRUD operations on the robots and the categories
 ## Categories
- GET /category
+ We can only list the categories.
+ - GET /category
 ## Robotos
+We can perfom insertion, listing and DELETION operations on the robotos. The delete and post methods are protected using basic authentication described in the next section.
  ##### Public routes
- GET /robot
- GET /robot/{id}
- GET /robot/category/{id}"
+ - GET /robot
+ - GET /robot/{id}
+ - GET /robot/category/{id}"
  ##### Protected routes
- POST /robot/{id}
- DELETE /robot/{id} 
+ - POST /robot/{id}
+ - DELETE /robot/{id} 
 # Authentication
 The API uses Basic authentication to authenticate users.
 
