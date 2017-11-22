@@ -3,7 +3,7 @@ This project was meant as exercice for integrating Angular 4 with spring boot.
 
 This exercice is divided into two parts: 
 1. The **frontend** which is written in Java using the [SpringBoot](https://projects.spring.io/spring-boot/) framwork.
-2. The **backend** which is written in typescript and uses the (Angular)[https://angular.io] 4 framework. 
+2. The **backend** which is written in typescript and uses the [Angular](https://angular.io) 4 framework. 
 
 The project is a simple e-commerce website that is used to sell robots online. The functionlaity of the store is limited to the following:
 - List product categories. Example Cleaning, indestrial robots or what have you.
