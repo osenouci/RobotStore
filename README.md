@@ -36,15 +36,20 @@ TST has been used to create the backend as a **Maven** project. The project has 
 ```
 .
 +-- lu.innoviction
+|   +-- RobotStoreApplication.java                   // Application entry point
 +-- lu.innoviction.configuration
-|   +-- begin-with-the-crazy-ideas.textile
-|   +-- on-simplicity-in-technology.markdown
-+-- lu.innoviction.controller
-|   +-- footer.html
-|   +-- header.html
+|   +-- CORSFilter.java                              // Allows cross browser requests
+|   +-- GlobalDefaultExceptionHandler.java           // Used to catch validation exceptions and output user friendly msgs.
+|   +-- SecurityConfig.java                          // Used to define authentication rules and adds a login test account.
++-- lu.innoviction.controller                        // contains Rest Controllers          
+|   +-- ApplicationController.java                   // Base controller
+|   +-- CategoryController.java                      // Lists the categories as Data Transfer Objects
+|   +-- RobotController.java                         // Used for listing, adding and removing robotos.
+|   +-- UserController.java                          // Contains a single method used to mimic the user login process.
 +-- lu.innoviction.model
-|   +-- default.html
-|   +-- post.html
+|   +-- Category.java                                // Defines the Category Entity (JPA). Category can have 0 or (n) robotos
+|   +-- Photo.java                                   // Defines the photos entity (JPA). A robot can have 0 or (n) photos.
+|   +-- Robot.java                                   // Defines the robot entity (JPA). Robot belongs to single cat & has several fotos
 +-- lu.innoviction.model.dto
 |   +-- 2007-10-29-why-every-programmer-should-play-nethack.textile
 |   +-- 2009-04-26-barcamp-boston-4-roundup.textile
