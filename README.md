@@ -44,10 +44,10 @@ TST has been used to create the backend as a **Maven** project. The project has 
 +-- lu.innoviction.controller             // contains Rest Controllers          
 |   +-- ApplicationController.java           // Base controller
 |   +-- CategoryController.java              // Lists the categories as Data Transfer Objects
-|   +-- RobotController.java                 // Used for listing, adding and removing robotos.
+|   +-- RobotController.java                 // Used for listing, adding and removing robots.
 |   +-- UserController.java                  // Contains a single method used to mimic the user login process.
 +-- lu.innoviction.model                  // Used to define entities
-|   +-- Category.java                        // A category can have 0 or (n) robotos
+|   +-- Category.java                        // A category can have 0 or (n) robots
 |   +-- Photo.java                           // A robot can have 0 or (n) photos.
 |   +-- Robot.java                           // A Robot belongs to single category & has several photos
 +-- lu.innoviction.model.dto              // Data transfer model using to hide, format and validate properties.
@@ -75,8 +75,8 @@ The application has two sets of routes that are used to carry out GRUD operation
 ## Categories
  We can only list the categories.
  - GET /category
-## Robotos
-We can perfom insertion, listing and DELETION operations on the robotos. The delete and post methods are protected using basic authentication described in the next section.
+## Robots
+We can perfom insertion, listing and deletion operations on the robots. The delete and post methods are protected using basic authentication described in the next section.
  ##### Public routes
  - GET /robot
  - GET /robot/{id}
